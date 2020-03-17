@@ -8,13 +8,14 @@
 </head>
 <body id="target">
     <header>
-        <h1><a href="index.html">Application</a></h1>
+        <img src="https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/course/94.png" alt="life coding">
+        <h1><a href="index.php">Application</a></h1>
     </header>
     <nav>
         <ul>
-            <li><a href="1.html">HTML</a></li>
-            <li><a href="2.html">CSS</a></li>
-            <li><a href="3.html">JavaScript</a></li>
+            <?php
+                echo file_get_contents("list.txt");
+            ?>
         </ul>
     </nav>
     <div id="control">
@@ -23,8 +24,13 @@
 
     </div>
     <article>
-        <h2>HTML</h2>
-        <P>HTML is Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti fuga a, libero animi consectetur, minus aliquam numquam eaque debitis ea sequi reprehenderit quaerat dolores accusantium ad temporibus aliquid ratione.</div></P>
+        <?php
+            if (empty($_GET['id'])==false) {
+            echo file_get_contents($_GET['id'].".txt");
+            } else { ?>
+                <h2>Welcome to Web</h2> <?php
+            }
+        ?>
         <div id="disqus_thread"></div>
         <script>
         
@@ -47,5 +53,18 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </article>
     <script src="script.js"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5e6339098d24fc22658644e8/1e3kc889i';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
