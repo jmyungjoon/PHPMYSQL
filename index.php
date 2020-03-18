@@ -1,10 +1,7 @@
 <?php
     $conn = mysqli_connect("localhost", "root", "zxcv1234");
     mysqli_select_db($conn, "opentutorials");
-    $result = mysqli_query($conn, "SELECT * FROM topic");
-    
-    
-   
+    $result = mysqli_query($conn, "SELECT * FROM topic");  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,15 +34,18 @@
     <article>
         <?php
         if(empty($_GET['id']) === false) {
-            $sql = 'SELECT * FROM topic WHERE id='.$_GET['id'];
+            $sql = "SELECT topic.id,title,name,description FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
             $result = mysqli_query($conn,$sql);
             $row = mysqli_fetch_assoc($result);
             echo '<h2>'.$row['title'].'</h2>';
+            echo '<p>'.$row['name'].'</p>';
             echo $row['description'];
             } else { ?>
                 <h2>Welcome to Web</h2> <?php
             }
         ?>
+        <?php
+        if(empty($_GET['id']) === false) { ?>
         <div id="disqus_thread"></div>
         <script>
         
@@ -66,7 +66,10 @@
         })();
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </article>
+        <?php } else { 
+
+        } ?>
+        </article>
     <script src="script.js"></script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
