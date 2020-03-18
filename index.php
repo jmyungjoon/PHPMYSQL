@@ -1,10 +1,18 @@
+<?php
+    $conn = mysqli_connect("localhost", "root", "zxcv1234");
+    mysqli_select_db($conn, "opentutorials");
+    $result = mysqli_query($conn, "SELECT * FROM topic");
+    
+    
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEB</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="http://localhost/style.css">
 </head>
 <body id="target">
     <header>
@@ -14,19 +22,26 @@
     <nav>
         <ul>
             <?php
-                echo file_get_contents("list.txt");
+                while($row = mysqli_fetch_assoc($result)){
+                    echo '<li><a href="index.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";    
+                    } 
             ?>
         </ul>
     </nav>
     <div id="control">
         <input type="button" value="white" id="white_btn"/>
         <input type="button" value="black" id="black_btn"/>
+        <a href="http://localhost/write.php">Write</a>
 
     </div>
     <article>
         <?php
-            if (empty($_GET['id'])==false) {
-            echo file_get_contents($_GET['id'].".txt");
+        if(empty($_GET['id']) === false) {
+            $sql = 'SELECT * FROM topic WHERE id='.$_GET['id'];
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_assoc($result);
+            echo '<h2>'.$row['title'].'</h2>';
+            echo $row['description'];
             } else { ?>
                 <h2>Welcome to Web</h2> <?php
             }

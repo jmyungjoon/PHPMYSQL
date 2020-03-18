@@ -29,12 +29,10 @@ article{
     margin-left:220px;
     margin-top: 20px;
 }
-article p {
-    margin-bottom: 200px;
-}
 h2{
     font-size:30px;
     margin: 0px;
+    height: 60px;
 }
 ul li a{
     line-height: 20px;
@@ -47,9 +45,12 @@ a:hover {
     padding: 10px;
 }
 .disqus_thread {
-    margin-top: 50px;
+    margin-top: 300px ;
 }
 header img {
     float: right;
     height: 100px;
+}
+#disqus_thread {
+    margin-top: 100px;
 }
