@@ -6,41 +6,16 @@ body.white {
     background-color: white;
     color: black;
 }
-header{
-    border-bottom:1px solid gray;
-    padding:20px;
-}
-header h1 a {
-text-decoration: none !important;
-margin-left: 15px;
-font-size: 3rem;
-}
-nav {
-    border-right:1px solid gray;
-    width:200px;
-    height:600px;
-    float:left;
-}
-nav ul{
-    list-style:none;
-    margin-top: 30px;
-}
-article{
-    margin-left:220px;
-    margin-top: 20px;
-}
-h2{
-    font-size:30px;
-    margin: 0px;
-    height: 60px;
-}
-ul li a{
-    line-height: 20px;
-}
 a:hover {
     color : red;
 }
+container {
+    padding: 20px;
+}
 #control {
+    margin-bottom: 20px;
+}
+/* #control {
     float: right;
     padding: 10px;
 }
@@ -53,4 +28,4 @@ header img {
 }
 #disqus_thread {
     margin-top: 100px;
-}
+} */

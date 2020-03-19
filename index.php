@@ -1,49 +1,60 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "zxcv1234");
-    mysqli_select_db($conn, "opentutorials");
-    $result = mysqli_query($conn, "SELECT * FROM topic");  
+require("config/config.php");
+require("lib/db.php");
+$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
+$result = mysqli_query($conn, "SELECT * FROM topic");  
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head >
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>WEB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/style.css">
+    <style>
+        #logo {
+            width: 100px;
+        }
+    </style>
 </head>
 <body id="target">
-    <header>
-        <img src="https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/course/94.png" alt="life coding">
+    <div class="container-fluid">
+    <header class="jumbotron text-center">
+        <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
         <h1><a href="index.php">Application</a></h1>
     </header>
-    <nav>
-        <ul>
+    <div class="row">
+    <nav class="col-md-3">
+        <ul >
             <?php
                 while($row = mysqli_fetch_assoc($result)){
-                    echo '<li><a href="index.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";    
+                    echo '<li><a href="index.php?id='.$row['id'].'">'.htmlspecialchars($row['title']).'</a></li>'."\n";    
                     } 
             ?>
         </ul>
     </nav>
-    <div id="control">
-        <input type="button" value="white" id="white_btn"/>
-        <input type="button" value="black" id="black_btn"/>
-        <a href="http://localhost/write.php">Write</a>
-
-    </div>
+    <div class="col-md-9">
     <article>
         <?php
         if(empty($_GET['id']) === false) {
             $sql = "SELECT topic.id,title,name,description FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
             $result = mysqli_query($conn,$sql);
             $row = mysqli_fetch_assoc($result);
-            echo '<h2>'.$row['title'].'</h2>';
-            echo '<p>'.$row['name'].'</p>';
-            echo $row['description'];
+            echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
+            echo '<p>'.htmlspecialchars($row['name']).'</p>';
+            echo strip_tags($row['description'], '<a><h1><h2><h3><h4><ul><ol><li>') ;
             } else { ?>
                 <h2>Welcome to Web</h2> <?php
             }
         ?>
+        <hr>
+        <div id="control">
+        <div class="btn-group" role="group" aria-label="...">
+            <input type="button" value="white" id="white_btn" class="btn btn-info btn-lg"/>
+            <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
+        </div>
+        <a href="write.php" class="btn btn-success btn-lg">Write</a>
         <?php
         if(empty($_GET['id']) === false) { ?>
         <div id="disqus_thread"></div>
@@ -70,6 +81,12 @@
 
         } ?>
         </article>
+        
+
+    </div>
+    </div>
+    </div>
+    </div>
     <script src="script.js"></script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -84,5 +101,10 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
