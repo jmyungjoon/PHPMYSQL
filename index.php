@@ -44,6 +44,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
             echo '<p>'.htmlspecialchars($row['name']).'</p>';
             echo strip_tags($row['description'], '<a><h1><h2><h3><h4><ul><ol><li>') ;
+            
             } else { ?>
                 <h2>Welcome to Web</h2> <?php
             }
@@ -54,9 +55,15 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             <input type="button" value="white" id="white_btn" class="btn btn-info btn-lg"/>
             <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
         </div>
-        <a href="write.php" class="btn btn-success btn-lg">Write</a>
+        <a href="write.php" class="btn btn-success btn-lg">New</a>
+
+        </article>
         <?php
-        if(empty($_GET['id']) === false) { ?>
+        if(empty($_GET['id']) === false) { 
+            ?>
+            <a href="update.php?id=<?=$_GET['id']?>" class="btn btn-success btn-lg">Update</a>
+            
+            
         <div id="disqus_thread"></div>
         <script>
         
@@ -78,9 +85,8 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <?php } else { 
-
+            
         } ?>
-        </article>
         
 
     </div>

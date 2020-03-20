@@ -4,6 +4,7 @@ require("lib/db.php");
 $conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
 $result = mysqli_query($conn, "SELECT * FROM topic");
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,21 +37,41 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
         </ul>
     </nav>
     <div class="col-md-9">
+    <?php
+    $sql = "SELECT * FROM user";
+    $result = mysqli_query($conn, $sql);
+    $select_form = '<select name="user_id">';
+    while($row = mysqli_fetch_array($result)){
+    $select_form .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+    }
+    $select_form .= '</select>';
+    ?>
     <article>
-        <form action="process.php" method="POST">
+        <?php
+        if(empty($_GET['id']) === false) {
+            $sql = "SELECT topic.id,title,name,description FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_assoc($result);
+            }
+            $description = strip_tags($row['description'], '<a><h1><h2><h3><h4><ul><ol><li>') ;
+        ?>
+
+        <form action="process_delete.php" method="POST">
+            <input type="hidden" name="id" value="<?php $_GET['id']?>">
             <div class="form-group">
                     <label for="form-title">Title</label>
-                    <input type="text" class="form-control" name="title" id="form-title" placeholder="Write a title here.">
+                    <input type="hidden" name="id" value="<?=$_GET['id']?>">
+                    <input type="text" class="form-control" name="title" id="form-title" placeholder="title" value="<?=$row['title']?>">
             </div>
             <div class="form-group">
                 <label for="form-author">Author</label>
-                <input type="text" class="form-control" name="author" id="form-author" placeholder="Write an author.">
+                <?=$select_form?>
             </div>
             <div class="form-group">
                 <label for="form-description">Description</label>
-                <textarea class="form-control" rows="10" name="description"  id="form-description" placeholder="Write a description."></textarea>
+                <textarea class="form-control" rows="10" name="description"  id="form-description" placeholder="description"><?php print $row['description'] ;?></textarea>
             </div>
-          <input type="submit" name="name" class="btn btn-success btn-lg" />
+          <input type="submit" name="name" class="btn btn-danger btn-lg" value="Delete"/>
         </form>
         <hr>
         <div id="control">
@@ -59,6 +80,9 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
         </div>
         <a href="write.php" class="btn btn-success btn-lg">New</a> 
+        <a href="delete.php" class="btn btn-danger btn-lg">Delete</a> 
+        
+        
     </article>
                 </div>
                 </div>
