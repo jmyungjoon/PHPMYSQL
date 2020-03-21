@@ -11,18 +11,21 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>WEB</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         #logo {
             width: 100px;
         }
+        #disqus_thread {
+            padding-top: 20px;
+        } 
     </style>
 </head>
 <body id="target">
     <div class="container-fluid">
     <header class="jumbotron text-center">
         <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
-        <h1><a href="index.php">Application</a></h1>
+        <h1><a href="index.php">WEB Application</a></h1>
     </header>
     <div class="row">
     <nav class="col-md-3">
@@ -46,9 +49,12 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             echo strip_tags($row['description'], '<a><h1><h2><h3><h4><ul><ol><li>') ;
             
             } else { ?>
-                <h2>Welcome to Web</h2> <?php
+                <h2>Welcome to Web Application</h2> <?php
             }
         ?>
+        
+
+        </article>
         <hr>
         <div id="control">
         <div class="btn-group" role="group" aria-label="...">
@@ -56,8 +62,6 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
         </div>
         <a href="write.php" class="btn btn-success btn-lg">New</a>
-
-        </article>
         <?php
         if(empty($_GET['id']) === false) { 
             ?>

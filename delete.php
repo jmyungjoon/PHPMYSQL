@@ -24,7 +24,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
 <div class="container-fluid">
     <header class="jumbotron text-center">
         <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
-        <h1><a href="index.php">Application</a></h1>
+        <h1><a href="index.php">WEB Application</a></h1>
     </header>
     <div class="row">
     <nav class="col-md-3">
