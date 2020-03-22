@@ -22,7 +22,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
 <body id="target">
 <div class="container-fluid">
     <header class="jumbotron text-center">
-        <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
+        <a href = "http://opentutorials.org"><img src="94.png" alt="life coding" class="rounded-circle" id="logo"></a>
         <h1><a href="index.php">Application</a></h1>
     </header>
     <div class="row">

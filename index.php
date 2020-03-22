@@ -3,6 +3,7 @@ require("config/config.php");
 require("lib/db.php");
 $conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
 $result = mysqli_query($conn, "SELECT * FROM topic");  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,19 +13,12 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
     <title>WEB</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <style>
-        #logo {
-            width: 100px;
-        }
-        #disqus_thread {
-            padding-top: 20px;
-        } 
-    </style>
+   
 </head>
 <body id="target">
     <div class="container-fluid">
     <header class="jumbotron text-center">
-        <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
+        <a href = "http://opentutorials.org"><img src="94.png" alt="life coding" class="rounded-circle" id="logo"></a>
         <h1><a href="index.php">WEB Application</a></h1>
     </header>
     <div class="row">

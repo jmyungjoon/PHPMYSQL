@@ -23,7 +23,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
 <body id="target">
 <div class="container-fluid">
     <header class="jumbotron text-center">
-        <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
+        <a href = "http://opentutorials.org"><img src="94.png" alt="life coding" class="rounded-circle" id="logo"></a>
         <h1><a href="index.php">WEB Application</a></h1>
     </header>
     <div class="row">
@@ -71,7 +71,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
                 <label for="form-description">Description</label>
                 <textarea class="form-control" rows="10" name="description"  id="form-description" placeholder="description"><?php print $row['description'] ;?></textarea>
             </div>
-          <input type="submit" name="name" class="btn btn-danger btn-lg" value="Delete"/>
+          <input type="submit" name="name" class="btn btn-danger btn-lg" value="Delete" title="Are you SURE?"/>
         </form>
         <hr>
         <div id="control">

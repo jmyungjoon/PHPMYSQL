@@ -11,7 +11,8 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB</title>
+    <meta name="description" content="Practice of making Web application according to Life Coding ">
+    <title>WEB Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -23,7 +24,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
 <body id="target">
 <div class="container-fluid">
     <header class="jumbotron text-center">
-        <img src="94.png" alt="life coding" class="rounded-circle" id="logo">
+        <a href = "http://opentutorials.org"><img src="94.png" alt="life coding" class="rounded-circle" id="logo"></a>
         <h1><a href="index.php">Application</a></h1>
     </header>
     <div class="row">
@@ -81,8 +82,6 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
         </div>
         <a href="write.php" class="btn btn-success btn-lg">New</a> 
         <a href="delete.php?id=<?=$_GET['id']?>" class="btn btn-danger btn-lg">Delete</a> 
-        
-        
     </article>
                 </div>
                 </div>

@@ -15,7 +15,13 @@ container {
 #control {
     margin-bottom: 20px;
 }
-
+#logo {
+    width: 100px;
+}
+#disqus_thread {
+    padding-top: 20px;
+} 
+    
     
 /* #control {
     float: right;
