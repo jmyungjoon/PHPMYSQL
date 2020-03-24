@@ -10,11 +10,11 @@
   <style>
     #move {
       display: inline-block;
-      transition-property: all;
-      transition-duration: 0.1s;
+      transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+      transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
     }
     #move:active {
-      transform: translate(10px,10px);
+      transform: translate(-50px,-50px);
     }
   </style>
 

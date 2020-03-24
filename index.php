@@ -14,14 +14,14 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <style>
-      #move {
-    display: inline-block;
-    transition-property: all;
-    transition-duration: 0.1s;
-}
-  #move:active {
-    transform: translate(10px,10px);
-}    
+        #move {
+            display: inline-block;
+            transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+            transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+        }
+        #move:active {
+            transform: translate(-50px,-50px);
+        }    
     </style>
 </head>
 <body id="target">
@@ -35,7 +35,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
         <ul >
             <?php
                 while($row = mysqli_fetch_assoc($result)){
-                    echo '<li><a href="index.php?id='.$row['id'].'">'.htmlspecialchars($row['title']).'</a></li>'."\n";    
+                    echo '<li><a href="index.php?id='.$row['id'].'">'.htmlspecialchars($row['title']).' </a></li>'."\n";    
                     } 
             ?>
         </ul>
