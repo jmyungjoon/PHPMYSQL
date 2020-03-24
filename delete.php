@@ -71,7 +71,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
                 <label for="form-description">Description</label>
                 <textarea class="form-control" rows="10" name="description"  id="form-description" placeholder="description"><?php print $row['description'] ;?></textarea>
             </div>
-          <input type="submit" name="name" class="btn btn-danger btn-lg" value="Delete" title="Are you SURE?"/>
+          <input type="submit" name="name" id = "move" class="btn btn-danger btn-lg" value="Delete" title="Are you SURE?"/>
         </form>
         <hr>
         <div id="control">
@@ -79,8 +79,8 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             <input type="button" value="white" id="white_btn" class="btn btn-info btn-lg"/>
             <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
         </div>
-        <a href="write.php" class="btn btn-success btn-lg">New</a> 
-        <a href="delete.php" class="btn btn-danger btn-lg">Delete</a> 
+        <a href="write.php" id = "move" class="btn btn-success btn-lg">New</a> 
+        <a href="delete.php" id = "move" class="btn btn-danger btn-lg">Delete</a> 
         
         
     </article>

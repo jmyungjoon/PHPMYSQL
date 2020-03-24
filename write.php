@@ -17,6 +17,14 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
         #logo {
             width: 100px;
         }
+        #move {
+    display: inline-block;
+    transition-property: all;
+    transition-duration: 0.1s;
+}
+  #move:active {
+    transform: translate(10px,10px);
+}  
     </style>
 </head>
 <body id="target">
@@ -50,7 +58,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
                 <label for="form-description">Description</label>
                 <textarea class="form-control" rows="10" name="description"  id="form-description" placeholder="Write a description."></textarea>
             </div>
-          <input type="submit" name="name" class="btn btn-success btn-lg" />
+          <input type="submit" name="name" id = "move" class="btn btn-success btn-lg" />
         </form>
         <hr>
         <div id="control">
@@ -58,7 +66,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             <input type="button" value="white" id="white_btn" class="btn btn-info btn-lg"/>
             <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
         </div>
-        <a href="write.php" class="btn btn-success btn-lg">New</a> 
+        <a href="write.php" id = "move" class="btn btn-success btn-lg">New</a> 
     </article>
                 </div>
                 </div>

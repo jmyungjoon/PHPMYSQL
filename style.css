@@ -21,7 +21,14 @@ container {
 #disqus_thread {
     padding-top: 20px;
 } 
-    
+#move {
+    display: inline-block;
+    transition-property: all;
+    transition-duration: 0.1s;
+}
+  #move:active {
+    transform: translate(10px,10px);
+}  
     
 /* #control {
     float: right;

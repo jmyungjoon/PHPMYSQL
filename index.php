@@ -13,7 +13,16 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
     <title>WEB</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-   
+    <style>
+      #move {
+    display: inline-block;
+    transition-property: all;
+    transition-duration: 0.1s;
+}
+  #move:active {
+    transform: translate(10px,10px);
+}    
+    </style>
 </head>
 <body id="target">
     <div class="container-fluid">
@@ -55,11 +64,11 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             <input type="button" value="white" id="white_btn" class="btn btn-info btn-lg"/>
             <input type="button" value="black" id="black_btn" class="btn btn-info btn-lg"/>
         </div>
-        <a href="write.php" class="btn btn-success btn-lg">New</a>
+        <a href="write.php" id = "move" class="btn btn-success btn-lg">New</a>
         <?php
         if(empty($_GET['id']) === false) { 
             ?>
-            <a href="update.php?id=<?=$_GET['id']?>" class="btn btn-success btn-lg">Update</a>
+            <a href="update.php?id=<?=$_GET['id']?>" id = "move" class="btn btn-success btn-lg">Update</a>
             
             
         <div id="disqus_thread"></div>
