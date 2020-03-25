@@ -8,5 +8,5 @@ $description = mysqli_real_escape_string($conn, $_POST['description']);
 $user_id = mysqli_real_escape_string($conn, $_POST['user_id']);
 $sql = "UPDATE topic SET title='$title', description='$description', author='$user_id' WHERE topic.id = $id;";
 $result = mysqli_query($conn, $sql);  
-header('Location: index.php');
+header('Location: index.php?id='.$id.'');
 ?>

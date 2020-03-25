@@ -69,7 +69,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
         if(empty($_GET['id']) === false) { 
             ?>
             <a href="update.php?id=<?=$_GET['id']?>" id = "move" class="btn btn-success btn-lg">Update</a>
-            
+            <a href="delete.php?id=<?=$_GET['id']?>" id = "move" class="btn btn-danger btn-lg">Delete</a> 
             
         <div id="disqus_thread"></div>
         <script>

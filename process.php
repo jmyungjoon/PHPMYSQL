@@ -5,7 +5,8 @@ $conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dnam
 $title = mysqli_real_escape_string($conn, $_POST['title']);
 $author = mysqli_real_escape_string($conn, $_POST['author']);
 $description = mysqli_real_escape_string($conn, $_POST['description']);
-    
+  
+if(empty($_POST['title']) === false) {
   $sql = "SELECT * FROM user WHERE name='".$author."'";
     $result = mysqli_query($conn, $sql);
     if($result->num_rows == 0) {
@@ -18,5 +19,10 @@ $description = mysqli_real_escape_string($conn, $_POST['description']);
     }
     $sql = "INSERT INTO topic (title, description, author,created) VALUE('".$title."','".$description."','".$user_id."',now())";
     $result = mysqli_query($conn, $sql);
-    header('Location: index.php');
+    $result = mysqli_query($conn, "SELECT * FROM topic ORDER BY id DESC LIMIT 1");
+    $row = mysqli_fetch_assoc($result);
+    header('Location: index.php?id='.$row['id'].'');
+} else {
+  header('Location: write.php');
+  }
 ?>

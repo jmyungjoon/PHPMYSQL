@@ -26,6 +26,8 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
     transform: translate(10px,10px);
 }  
     </style>
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
 </head>
 <body id="target">
 <div class="container-fluid">
@@ -59,6 +61,11 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
                 <textarea class="form-control" rows="10" name="description"  id="form-description" placeholder="Write a description."></textarea>
             </div>
           <input type="submit" name="name" id = "move" class="btn btn-success btn-lg" />
+          <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'form-description' );
+            </script>
         </form>
         <hr>
         <div id="control">
